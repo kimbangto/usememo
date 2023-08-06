@@ -1,0 +1,67 @@
+:root {
+  --main-color: #02343f;
+  --sub-color: #f0edcc;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: var(--sub-color);
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0;
+  color: var(--main-color);
+
+  > .app {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    & > .banner {
+      > h1 {
+        text-align: center;
+      }
+
+      > ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > li > button {
+          padding: 10px 20px;
+          margin: 0 10px;
+          color: var(--sub-color);
+          background-color: var(--main-color);
+          border-radius: 20px;
+          font-size: 15px;
+          /* font-weight: bold; */
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    > main {
+      height: 100%;
+      scrollbar-width: 10px;
+      scrollbar-color: var(--main-color);
+      scrollbar-face-color: var(--sub-color);
+
+      &::-webkit-scrollbar {
+        background-color: var(--main-color);
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--sub-color);
+      }
+    }
+
+    > footer {
+      text-align: center;
+    }
+  }
+}
