@@ -4,8 +4,8 @@ export class ImageComponent extends BaseComponent<HTMLElement> {
   constructor(title: string, url: string) {
     super(
       `<section class="image">
+      <h3 class="image_title"></h3>
         <div class="image_holder"><img class="image_thumbnail"></div>
-        <p class="image_title"></p>
       </section>`
     );
 
@@ -17,7 +17,7 @@ export class ImageComponent extends BaseComponent<HTMLElement> {
 
     const titleElement = this.element.querySelector(
       '.image_title'
-    )! as HTMLParagraphElement;
+    )! as HTMLHeadingElement;
     titleElement.textContent = title;
   }
 }

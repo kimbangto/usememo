@@ -4,24 +4,34 @@ export class YoutubeComponent extends BaseComponent<HTMLElement> {
   constructor(title: string, url: string) {
     super(
       `<section class="youtube">
+      <h3 class="youtube_title"></h3>
       <div class="youtube_holder">
-      <iframe class="youtube_thumbnail" width="480" height="270" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe class="youtube_iframe"
+        width="300"
+        height="150"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
       </div>
-      <p class="youtube_title"></p>
     </section>`
     );
 
     const videoElement = this.element.querySelector(
-      '.youtube_thumbnail'
+      '.youtube_iframe'
     )! as HTMLIFrameElement;
-    const videoID = url.split('/');
-    videoElement.src =
-      'http://youtube.com/embed/' + videoID[videoID.length - 1];
-    console.log(videoID[videoID.length - 1].replace('watch?v=', ''));
+    videoElement.src = this.convertToEmbeddedURL(url);
 
     const titleElement = this.element.querySelector(
       '.youtube_title'
-    )! as HTMLParagraphElement;
+    )! as HTMLHeadingElement;
     titleElement.textContent = title;
+  }
+
+  private convertToEmbeddedURL(url: string): string {
+    const splitedURL = url.split('/');
+    const videoID = splitedURL[splitedURL.length - 1].replace('watch?v=', '');
+    const template = 'http://youtube.com/embed/';
+    return template.concat(videoID);
   }
 }
